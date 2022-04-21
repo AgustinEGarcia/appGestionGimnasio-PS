@@ -1,10 +1,15 @@
-import AppModel from "../models/appModel.js";
+import userServices from "../services/user_services.js";
+
+function getHorarios(){
+    return ["05", "06", "07", "08", "09", "13", "14", "15", "16", 
+    "17","18", "19", "20"]
+}
 
 //mostrar todos los alumnos
 
-export const getAllStudents = async (req, res) => {
+export const getAllStudentsController = async (req, res) => {
     try {
-        const students = await AppModel.findAll()
+        const students = await userServices.getAllStudents()
         res.json(students)
     } catch (error) {
         res.json({message: error.message})
@@ -15,9 +20,7 @@ export const getAllStudents = async (req, res) => {
 
 export const getStudent = async (req, res) => {
     try {
-        const student = await AppModel.findAll({
-            where:{id: req.params.id}
-        })
+        const student = await userServices.getStudentByID(req.params.id)
         res.json(student[0])
     } catch (error) {
         res.json({message: error.message})
@@ -66,3 +69,21 @@ export const deleteStudent = async (req, res) => {
         res.json({message: error.message})
     }
 }
+
+export async function getHorariosDisponibles(){
+    const horarios = getHorarios()
+    const students = await userServices.getAllStudents()
+
+    return horarios.filter( 
+        ( horario => !students.find( students => students.Turno_asignado === horario ) ) )
+}
+
+export const verHorariosDisp = async (req, res) => {
+    try {
+        console.log("hola")
+        await res.json(getHorariosDisponibles())
+    } catch (error) {
+        res.json({message: error.message})
+    }
+}
+
