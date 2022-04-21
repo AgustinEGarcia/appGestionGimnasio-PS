@@ -1,5 +1,6 @@
 import express from 'express'
 import { createStudent, deleteStudent, getAllStudentsController, getStudent, updateStudent, verHorariosDisp } from '../controllers/appController.js'
+
 const router = express.Router()
 
 router.get('/', getAllStudentsController)

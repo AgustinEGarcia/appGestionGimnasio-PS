@@ -1,4 +1,4 @@
-import AppModel from "../models/appModel.js";
+import AppModel from "../models/AppModel.js";
 
 async function getAllStudents () {
     return await AppModel.findAll()
