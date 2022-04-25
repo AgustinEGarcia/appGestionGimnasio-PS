@@ -1,13 +1,14 @@
 import express from 'express'
-import { createStudent, deleteStudent, getAllStudentsController, getStudent, updateStudent, verHorariosDisp } from '../controllers/appController.js'
+import { createStudentController, getAllStudentsController, getStudentController, updateStudentController, deleteStudentController, verHorariosDisp } from '../controllers/appController.js'
 
 const router = express.Router()
 
-router.get('/', getAllStudentsController)
-router.get('/:id', getStudent)
-router.post('/', createStudent)
-router.put('/:id', updateStudent)
-router.delete('/:id', deleteStudent)
 router.get('/horariosDisponibles', verHorariosDisp)
+router.get('/', getAllStudentsController)
+router.get('/:id', getStudentController)
+router.post('/', createStudentController)
+router.put('/:id', updateStudentController)
+router.delete('/:id', deleteStudentController)
+
 
 export default router

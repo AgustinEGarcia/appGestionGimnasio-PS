@@ -1,7 +1,8 @@
 import userServices from "../services/user_services.js";
+import AppModel from "../models/AppModel.js";
 
 function getHorarios(){
-    return ["05", "06", "07", "08", "09", "13", "14", "15", "16", 
+    return ["5", "6", "7", "8", "9", "13", "14", "15", "16", 
     "17","18", "19", "20"]
 }
 
@@ -18,7 +19,7 @@ export const getAllStudentsController = async (req, res) => {
 
 //traer un solo alumno
 
-export const getStudent = async (req, res) => {
+export const getStudentController = async (req, res) => {
     try {
         const student = await userServices.getStudentByID(req.params.id)
         res.json(student[0])
@@ -29,9 +30,9 @@ export const getStudent = async (req, res) => {
 
 //crear un alumno
 
-export const createStudent = async (req, res) => {
+export const createStudentController = async (req, res) => {
     try {
-       await AppModel.create(req.body)
+       await userServices.createStudent(req)
        res.json({
            message:"Alumno creado correctamente"
        })
@@ -42,11 +43,9 @@ export const createStudent = async (req, res) => {
 
 //actualizar un alumno
 
-export const updateStudent = async (req, res) => {
+export const updateStudentController = async (req, res) => {
     try {
-        await AppModel.update(req.body, {
-            where: {id: req.params.id}
-        })
+        await userServices.updateStudent(req)
         res.json({
             message:"Datos del alumno actualizados correctamente"
         })
@@ -57,11 +56,9 @@ export const updateStudent = async (req, res) => {
 
 //Eliminar un alumno
 
-export const deleteStudent = async (req, res) => {
+export const deleteStudentController = async (req, res) => {
     try {
-        await AppModel.destroy({
-            where: {id: req.params.id}
-        })
+        await userServices.deleteStudent(req)
         res.json({
             message:"Alumno eliminado correctamente"
         })
@@ -74,14 +71,17 @@ export async function getHorariosDisponibles(){
     const horarios = getHorarios()
     const students = await userServices.getAllStudents()
 
+    console.log(students)
+
     return horarios.filter( 
-        ( horario => !students.find( students => students.Turno_asignado === horario ) ) )
+        ( horario => !students.find( student => student.Turno_asignado?.toString() === horario ) ) )
 }
 
 export const verHorariosDisp = async (req, res) => {
     try {
         console.log("hola")
-        await res.json(getHorariosDisponibles())
+        const horarios = await getHorariosDisponibles()
+        res.json(horarios)
     } catch (error) {
         res.json({message: error.message})
     }
