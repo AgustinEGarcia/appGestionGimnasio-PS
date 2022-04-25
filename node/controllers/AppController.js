@@ -1,5 +1,4 @@
 import userServices from "../services/user_services.js";
-import AppModel from "../models/AppModel.js";
 
 function getHorarios(){
     return ["5", "6", "7", "8", "9", "13", "14", "15", "16", 
@@ -67,17 +66,25 @@ export const deleteStudentController = async (req, res) => {
     }
 }
 
+//obtener los horarios disponibles para asignar un turno a un alumno
+
 export async function getHorariosDisponibles(){
-    const horarios = getHorarios()
-    const students = await userServices.getAllStudents()
+    const horarios = getHorarios() //obtengo los horarios de trabajo del gimnasio
+    const students = await userServices.getAllStudents() //obtengo todos los alumnos
 
     console.log(students)
 
+    /*
+    comparo los horarios disponibles con los horarios que tienen asignado alumnos, para devolver
+    los que estan libres
+    */
+
     return horarios.filter( 
-        ( horario => !students.find( student => student.Turno_asignado?.toString() === horario ) ) )
+        (horario => !students.find(student => student.Turno_asignado?.toString() === horario)))
 }
 
-export const verHorariosDisp = async (req, res) => {
+// controlador de prueba del funcionamiento de la funcion getHorariosDisponibles()
+export const verHorariosDispController = async (req, res) => {
     try {
         console.log("hola")
         const horarios = await getHorariosDisponibles()

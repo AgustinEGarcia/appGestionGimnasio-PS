@@ -1,9 +1,11 @@
 import express from 'express'
-import { createStudentController, getAllStudentsController, getStudentController, updateStudentController, deleteStudentController, verHorariosDisp } from '../controllers/appController.js'
+import { createStudentController, getAllStudentsController, getStudentController, 
+        updateStudentController, deleteStudentController, 
+        verHorariosDispController } from '../controllers/appController.js'
 
-const router = express.Router()
+        const router = express.Router()
 
-router.get('/horariosDisponibles', verHorariosDisp)
+router.get('/horariosDisponibles', verHorariosDispController)
 router.get('/', getAllStudentsController)
 router.get('/:id', getStudentController)
 router.post('/', createStudentController)
