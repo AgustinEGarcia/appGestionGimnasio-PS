@@ -21,7 +21,7 @@ const CompShowStudents = () => {
 
 //procedimiento para eliminar un estudiante
     const deleteStudent = async (id) => {
-        axios.delete(`${URI}${id}`)
+        await axios.delete(`${URI}${id}`)
         getStudents()
     }
 
