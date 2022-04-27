@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { getHorarios } from "../services/api";
 
 const URI = 'http://localhost:8000/students/'
 
@@ -17,8 +18,6 @@ const CompEditStudent = () => {
     const navigate = useNavigate()
 
     const {id} = useParams()
-    console.log(id)
-    debugger
 
     const update = async (e) => {
         e.preventDefault()
@@ -29,8 +28,13 @@ const CompEditStudent = () => {
         navigate('/')
     }
 
+    const [horariosDisponibles, sethorariosDisponibles] = useState([])
+
     useEffect(()=>{
         getStudentByID()
+        getHorarios().then(horarios => {
+            sethorariosDisponibles(horarios)
+        })
     },[])
 
     const getStudentByID = async () => {
@@ -76,8 +80,15 @@ const CompEditStudent = () => {
                     <input value={Tipo_membresia} onChange={(e) => setTipo_membresia(e.target.value)} type="text" aria-label="Tipo membresía" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
-                    <span className="input-group-text">Turno asignado</span>
-                    <input value={Turno_asignado} onChange={(e) => setTurno_asignado(e.target.value)} type="number" aria-label="Turno asignado" className="form-control"></input>
+                    <label className="input-group-text" for="inputGroupSelect02">Turno_asignado</label>
+                    <select className="form-select" id="inputGroupSelect02" onChange={(e) => setTurno_asignado(Number(e.target.value))}>
+                        <option selected>Seleccione una</option>
+                        {horariosDisponibles.map(element => 
+                            
+                            <option value= {element} >{element}hs</option>
+                                
+                        )};
+                    </select>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Estado membresía</span>

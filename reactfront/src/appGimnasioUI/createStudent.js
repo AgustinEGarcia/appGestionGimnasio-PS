@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getHorarios } from "../services/api";
+
 
 //constante para hacer referencia a nuestro endpoint
 const URI = 'http://localhost:8000/students/'
+
 
 const CompCreateStudent = () => {
 
@@ -22,8 +25,26 @@ const CompCreateStudent = () => {
         e.preventDefault()
         await axios.post(URI, {Nombre: Nombre, Apellido: Apellido, DNI: DNI.toString(), Fecha_nacimiento: Fecha_nacimiento, 
             Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado.toString(), Estado_membresia: Estado_membresia})
-        navigate('/')
+        
+            navigate('/')
     }
+
+    const [horariosDisponibles, sethorariosDisponibles] = useState([])
+   
+    useEffect(()=>{
+        getHorarios().then(horarios => {
+            sethorariosDisponibles(horarios)
+        })
+        
+    },[])
+    
+    useEffect(()=>{
+        if(Tipo_membresia!=='Preferencial'){
+            setTurno_asignado('')
+        }
+        console.log(Tipo_membresia)
+        console.log(Turno_asignado)
+    },[Tipo_membresia])
 
     return (
         <div className="container">
@@ -40,7 +61,7 @@ const CompCreateStudent = () => {
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">DNI</span>
-                    <input value={DNI} onChange={(e) => setDNI(e.target.value)} type="text" aria-label="DNI" className="form-control"></input>
+                    <input value={DNI} onChange={(e) => setDNI(e.target.value)} type="number" aria-label="DNI" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Fecha de nacimiento</span>
@@ -48,24 +69,31 @@ const CompCreateStudent = () => {
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Nro. de teléfono</span>
-                    <input value={Nro_telefono} onChange={(e) => setNro_telefono(e.target.value)} type="text" aria-label="Nro. de teléfono" className="form-control"></input>
+                    <input value={Nro_telefono} onChange={(e) => setNro_telefono(e.target.value)} type="number" aria-label="Nro. de teléfono" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
-                    <label className="input-group-text" for="inputGroupSelect01">Tipo de membresía</label>
-                    <select className="form-select" id="inputGroupSelect01">
-                        <option selected>Seleccione una</option>
-                        <option value="Común" onChange={(e) => setTipo_membresia(e.target.value)}>Común</option>
-                        <option value="Preferencial" onChange={(e) => setTipo_membresia(e.target.value)}>Preferencial</option>
+                    <label className="input-group-text" htmlFor="inputGroupSelect01">Tipo de membresía</label>
+                    <select className="form-select" id="inputGroupSelect01" onChange={(e) => setTipo_membresia(e.target.value)}>
+                        <option defaultValue>Seleccione una</option>
+                        <option value="Común">Común</option>
+                        <option value="Preferencial">Preferencial</option>
                     </select>
                 </div>
                 <div className="input-group mt-3">
-                    <span className="input-group-text">Turno asignado</span>
-                    <input value={Turno_asignado} onChange={(e) => setTurno_asignado(e.target.value)} type="text" aria-label="Turno asignado" className="form-control"></input>
+                    <label className="input-group-text" htmlFor="inputGroupSelect02">Turno_asignado</label>
+                    <select disabled={Tipo_membresia!=='Preferencial'} value={Turno_asignado} className="form-select" id="inputGroupSelect02" onChange={(e) => setTurno_asignado(Number(e.target.value))}>
+                        <option defaultValue>Seleccione una</option>
+                        {horariosDisponibles.map((element, index) => 
+                            
+                            <option key={index} value= {element} >{element}hs</option>
+                                
+                        )};
+                    </select>
                 </div>
                 <div className="input-group mt-3">
-                    <label className="input-group-text" for="inputGroupSelect02">Estado de membresía</label>
-                    <select className="form-select" id="inputGroupSelect02">
-                        <option selected>Seleccione una</option>
+                    <label className="input-group-text" htmlFor="inputGroupSelect03">Estado de membresía</label>
+                    <select className="form-select" id="inputGroupSelect03">
+                        <option defaultValue>Seleccione una</option>
                         <option value="Al día" onChange={(e) => setEstado_membresia(e.target.value)}>Al día</option>
                         <option value="Atrasada" onChange={(e) => setEstado_membresia(e.target.value)}>Atrasada</option>
                     </select>

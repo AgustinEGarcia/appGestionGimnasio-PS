@@ -86,7 +86,6 @@ export async function getHorariosDisponibles(){
 // controlador de prueba del funcionamiento de la funcion getHorariosDisponibles()
 export const verHorariosDispController = async (req, res) => {
     try {
-        console.log("hola")
         const horarios = await getHorariosDisponibles()
         res.json(horarios)
     } catch (error) {

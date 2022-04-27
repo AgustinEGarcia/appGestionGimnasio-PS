@@ -31,7 +31,7 @@ const CompShowStudents = () => {
             <div className='row'>
 
                 <div className='col'>
-                    <Link to="/create" className='btn btn-primary mt-2 mb-2 btn-lg'><i class="fa-solid fa-circle-plus"></i></Link>
+
                     <table className="table table-hover">
                         
                         <thead className='table-primary'>
@@ -64,15 +64,16 @@ const CompShowStudents = () => {
                                     <td>{student.Turno_asignado}</td>
                                     <td>{student.Estado_membresia}</td>
                                     <td>
-                                        <Link to={`/edit/${student.id}`} className='btn btn-info'><i class="fa-solid fa-pen-to-square"></i></Link>
-                                        <button onClick={ () => deleteStudent(student.id)} className='btn btn-danger'><i class="fa-solid fa-trash-can"></i></button>
+                                        <Link to={`/edit/${student.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
+                                        <button onClick={ () => deleteStudent(student.id)} className='btn btn-danger'><i className="fa-solid fa-trash-can"></i></button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
 
                     </table>
-
+                    
+                    <Link to="/create" className='btn btn-primary mt-2 mb-2 btn-lg'><i className="fa-solid fa-circle-plus"></i></Link>
                 </div>
 
             </div>

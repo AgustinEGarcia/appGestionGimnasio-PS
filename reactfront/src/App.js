@@ -1,5 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+import Menu from './components/Menu';
+
+
 
 //importamos los componentes
 import CompShowStudents from './appGimnasioUI/showStudents';
@@ -10,14 +13,14 @@ import CompEditStudent from './appGimnasioUI/editStudent';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
+  
+  
+
   return (
     <div className="App">
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-
       <BrowserRouter>
+        <Menu />
         <Routes>
           <Route path='/' element={<CompShowStudents/>}/>
           <Route path='/create' element={<CompCreateStudent/>}/>
