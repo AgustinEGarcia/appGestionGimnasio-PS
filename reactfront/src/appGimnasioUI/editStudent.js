@@ -22,8 +22,8 @@ const CompEditStudent = () => {
 
     const update = async (e) => {
         e.preventDefault()
-        await axios.put(URI+id, {Nombre: Nombre, Apellido: Apellido, DNI: DNI, Fecha_nacimiento: Fecha_nacimiento, 
-            Nro_telefono: Nro_telefono, Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado, 
+        await axios.put(URI+id, {Nombre: Nombre, Apellido: Apellido, DNI: DNI.toString(), Fecha_nacimiento: Fecha_nacimiento, 
+            Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado.toString(), 
             Estado_membresia: Estado_membresia
         })
         navigate('/')
@@ -53,35 +53,35 @@ const CompEditStudent = () => {
                 
                 <div className="input-group mt-3">
                     <span className="input-group-text">Nombre</span>
-                    <input value={Nombre} onChange={(e) => setNombre(e.target.value)} type="text" aria-label="Nombre" class="form-control"></input>
+                    <input value={Nombre} onChange={(e) => setNombre(e.target.value)} type="text" aria-label="Nombre" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Apellido</span>
-                    <input value={Apellido} onChange={(e) => setApellido(e.target.value)} type="text" aria-label="Apellido" class="form-control"></input>
+                    <input value={Apellido} onChange={(e) => setApellido(e.target.value)} type="text" aria-label="Apellido" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">DNI</span>
-                    <input value={DNI} onChange={(e) => setDNI(e.target.value)} type="text" aria-label="DNI" class="form-control"></input>
+                    <input value={DNI} onChange={(e) => setDNI(e.target.value)} type="number" aria-label="DNI" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Fecha de nacimiento</span>
-                    <input value={Fecha_nacimiento} onChange={(e) => setFecha_nacimiento(e.target.value)} type="date" aria-label="Fecha de nacimiento" class="form-control"></input>
+                    <input value={Fecha_nacimiento} onChange={(e) => setFecha_nacimiento(e.target.value)} type="date" aria-label="Fecha de nacimiento" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Nro. de teléfono</span>
-                    <input value={Nro_telefono} onChange={(e) => setNro_telefono(e.target.value)} type="text" aria-label="Nro. de teléfono" class="form-control"></input>
+                    <input value={Nro_telefono} onChange={(e) => setNro_telefono(e.target.value)} type="number" aria-label="Nro. de teléfono" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Tipo membresía</span>
-                    <input value={Tipo_membresia} onChange={(e) => setTipo_membresia(e.target.value)} type="text" aria-label="Tipo membresía" class="form-control"></input>
+                    <input value={Tipo_membresia} onChange={(e) => setTipo_membresia(e.target.value)} type="text" aria-label="Tipo membresía" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Turno asignado</span>
-                    <input value={Turno_asignado} onChange={(e) => setTurno_asignado(e.target.value)} type="text" aria-label="Turno asignado" class="form-control"></input>
+                    <input value={Turno_asignado} onChange={(e) => setTurno_asignado(e.target.value)} type="number" aria-label="Turno asignado" className="form-control"></input>
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text">Estado membresía</span>
-                    <input value={Estado_membresia} onChange={(e) => setEstado_membresia(e.target.value)} type="text" aria-label="Estado membresía" class="form-control"></input>
+                    <input value={Estado_membresia} onChange={(e) => setEstado_membresia(e.target.value)} type="text" aria-label="Estado membresía" className="form-control"></input>
                 </div>
 
                 <button type="submit" className="btn btn-success mt-3">Guardar</button>
