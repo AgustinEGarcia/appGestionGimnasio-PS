@@ -12,7 +12,7 @@ export const getAllStudentsController = async (req, res) => {
         const students = await userServices.getAllStudents()
         res.json(students)
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -23,7 +23,7 @@ export const getStudentController = async (req, res) => {
         const student = await userServices.getStudentByID(req.params.id)
         res.json(student[0])
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -36,7 +36,7 @@ export const createStudentController = async (req, res) => {
            message:"Alumno creado correctamente"
        })
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -49,7 +49,7 @@ export const updateStudentController = async (req, res) => {
             message:"Datos del alumno actualizados correctamente"
         })
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -62,7 +62,7 @@ export const deleteStudentController = async (req, res) => {
             message:"Alumno eliminado correctamente"
         })
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -89,7 +89,7 @@ export const verHorariosDispController = async (req, res) => {
         const horarios = await getHorariosDisponibles()
         res.json(horarios)
     } catch (error) {
-        res.json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
