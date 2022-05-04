@@ -42,8 +42,6 @@ const CompCreateStudent = () => {
         if(Tipo_membresia!=='Preferencial'){
             setTurno_asignado('')
         }
-        console.log(Tipo_membresia)
-        console.log(Turno_asignado)
     },[Tipo_membresia])
 
     return (
