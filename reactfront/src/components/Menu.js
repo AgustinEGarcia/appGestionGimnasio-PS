@@ -10,13 +10,15 @@ const Menu = () => {
     
     return (
 
-        <div className='position-fixed'>
+        <div>
 
         <Navigation
             // you can use your own router's api to get pathname
             activeItemId={location.pathname}
             onSelect={({ itemId }) => {
-            navigation.navigate(itemId);
+                if (itemId){
+                    navigation(itemId);
+                }
             }}
 
             items={[
@@ -28,13 +30,13 @@ const Menu = () => {
                 elemBefore: () => <Icon name="inbox" />,
             },
             {
-                title: 'Ingresar alumno',
-                itemId: '/create',
+                title: 'Gestión alumnos',
+                //itemId: '/create',
                 elemBefore: () => <Icon name="users" />,
                 subNav: [
                 {
-                    title: 'Projects',
-                    itemId: '/management/projects',
+                    title: 'Ingresar alumno',
+                    itemId: '/create',
                 },
                 {
                     title: 'Members',
