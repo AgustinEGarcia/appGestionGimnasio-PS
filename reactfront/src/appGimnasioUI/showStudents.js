@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import '../App.css';
 
 //constante para hacer referencia a nuestro endpoint
 const URI = 'http://localhost:8000/students/'
@@ -26,17 +27,17 @@ const CompShowStudents = () => {
     }
 
     return(
-        <div>
+        <div className='div_padre'>
             
             <div className='row'>
 
                 <div className='col'>
 
-                    <table className="table table-hover">
+                    <table className="table" >
                         
-                        <thead className='table-primary'>
+                        <thead className='cabecera-grilla'>
 
-                            <tr>
+                            <tr className='columnas_grilla'>
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
@@ -51,7 +52,7 @@ const CompShowStudents = () => {
 
                         </thead>
 
-                        <tbody>
+                        <tbody className='filas_alumnos'>
                             {students.map ((student) => (
                                 <tr key={student.id}>
                                     <td>{student.ID}</td>
@@ -64,8 +65,8 @@ const CompShowStudents = () => {
                                     <td>{student.Turno_asignado}</td>
                                     <td>{student.Estado_membresia}</td>
                                     <td>
-                                        <Link to={`/edit/${student.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
-                                        <button onClick={ () => deleteStudent(student.id)} className='btn btn-danger'><i className="fa-solid fa-trash-can"></i></button>
+                                        <Link to={`/edit/${student.id}`} className='btn btn-info boton_editar_alumno'><i className="fa-solid fa-pen-to-square"></i></Link>
+                                        <button onClick={ () => deleteStudent(student.id)} className='btn btn-danger boton_nuevo_alumno'><i className="fa-solid fa-trash-can"></i></button>
                                     </td>
                                 </tr>
                             ))}
@@ -73,7 +74,7 @@ const CompShowStudents = () => {
 
                     </table>
                     
-                    <Link to="/create" className='btn btn-primary mt-2 mb-2 btn-lg'><i className="fa-solid fa-circle-plus"></i></Link>
+                    <Link to="/create" className='btn btn-primary mt-2 mb-2 btn-lg boton_nuevo_alumno'><i className="fa-solid fa-circle-plus"></i></Link>
                 </div>
 
             </div>

@@ -36,3 +36,166 @@
     transform: rotate(360deg);
   }
 }
+
+.banner{
+  /* width: 100%; */
+  height: 100%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.container_banner{
+
+  -webkit-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  -moz-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+
+  background-color: black;
+  padding: 1rem 0;
+  margin: 10px;
+}
+
+.container_grilla{
+  -webkit-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  -moz-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+
+  padding: 7px;
+  margin: 7px;
+  background-color: black;
+  color: #9A3C32;
+  margin-block-end: auto;
+  
+}
+
+.container_barra_lateral{
+  
+  -webkit-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  -moz-box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 75%);
+  
+  padding: 7px;
+  margin: 7px;
+
+  background-color: black;
+  margin-block-end: auto;
+
+}
+
+.cabecera-grilla{
+  background-color: #000000;
+  color: #9A3C32;
+  font-style: italic;
+  font-size: large;
+}
+
+.container_grilla_ingresar{
+  background-color:black;
+  margin: 5px;
+  padding: 15px;
+}
+
+
+.filas_alumnos{
+  border-color: #9A3C32;
+  color: #9A3C32;
+  font-weight: bolder;
+}
+
+.cabecera_ingresar_alumno{
+  font-style: italic;
+  color:#9A3C32;
+}
+
+.imput_form_control{
+  font-weight: bold !important;
+  color: gray !important;
+  background-color: black !important;
+  border: 2px solid #9A3C32 !important;
+}
+
+.option_value{
+  font-weight: bold !important;
+}
+
+.boton_guardar{
+  color: #9A3C32 !important;
+  background-color:black !important;
+  border: 5px solid #9A3C32 !important;
+  font-weight: bold !important;
+  font-style: italic !important;
+}
+
+.boton_nuevo_alumno{
+  color: #9A3C32 !important;
+  background-color:black !important;
+  border: 5px solid #9A3C32 !important;
+}
+.boton_editar_alumno{
+  margin: 5px !important;
+  color: #9A3C32 !important;
+  background-color:black !important;
+  border: 5px solid #9A3C32 !important;
+}
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option{
+  border: none;
+}
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-inner .side-navigation-panel-select-inner-wrap .side-navigation-panel-select-inner-option{
+  border: none;
+}
+
+/* .side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option:hover{
+  background-color: #9A3C32 !important;
+  color: #000000 !important;
+  border: 1px solid black !important;
+} */
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option{
+  background-color: #9A3C32 !important;
+  color: #000000 !important;
+  border: 2px solid black !important;
+  font-weight: bold !important;
+  
+  
+}
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-inner .side-navigation-panel-select-inner-wrap .side-navigation-panel-select-inner-option{
+  background-color: #9A3C32 !important;
+  color: #000000 !important;
+  border: 2px solid black !important;
+  font-weight: bold !important;
+  font-style: italic !important;
+  font-size: large !important;
+  
+  
+}
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option .side-navigation-panel-select-option-wrap .side-navigation-panel-select-option-text{
+  font-style: italic !important;
+  font-weight: 620 !important;
+  font-size: large !important;
+  font-weight: bold !important;
+  
+}
+
+.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-inner .side-navigation-panel-select-inner-wrap .side-navigation-panel-select-inner-option .side-navigation-panel-select-inner-option-wrap .side-navigation-panel-select-inner-option-text{
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+  font-size: large !important;
+}
+
+.imput_group_text{
+  background-color: #000000 !important;
+  color:#9A3C32 !important;
+  border: 5px solid #9A3C32 !important;
+  font-weight: bold !important;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .cabecera-grilla{
+    height: 100%;
+  }
+}

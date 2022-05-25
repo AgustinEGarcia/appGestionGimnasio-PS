@@ -1,6 +1,5 @@
 import './App.css';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
-import Menu from './components/Menu';
 import { Layout } from './components/Layout';
 
 
