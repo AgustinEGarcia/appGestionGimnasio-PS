@@ -74,7 +74,7 @@ const CompShowStudents = () => {
 
                     </table>
                     
-                    <Link to="/create" className='btn btn-primary mt-2 mb-2 btn-lg boton_nuevo_alumno'><i className="fa-solid fa-circle-plus"></i></Link>
+                    
                 </div>
 
             </div>
