@@ -55,7 +55,7 @@ const CompShowStudents = () => {
                         <tbody className='filas_alumnos'>
                             {students.map ((student) => (
                                 <tr key={student.id}>
-                                    <td>{student.ID}</td>
+                                    <td>{student.id}</td>
                                     <td>{student.Nombre}</td>
                                     <td>{student.Apellido}</td>
                                     <td>{student.DNI}</td>

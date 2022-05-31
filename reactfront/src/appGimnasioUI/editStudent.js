@@ -23,7 +23,7 @@ const CompEditStudent = () => {
     const update = async (e) => {
         e.preventDefault()
         await axios.put(URI+id, {Nombre: Nombre, Apellido: Apellido, DNI: DNI.toString(), Fecha_nacimiento: Fecha_nacimiento, 
-            Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado.toString(), 
+            Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado, 
             Estado_membresia: Estado_membresia
         })
         navigate('/')
@@ -36,7 +36,7 @@ const CompEditStudent = () => {
         getHorarios().then(horarios => {
             sethorariosDisponibles(horarios)
         })
-    },[])
+    })
 
     const getStudentByID = async () => {
         const res = await axios.get(URI+id)
@@ -48,6 +48,7 @@ const CompEditStudent = () => {
         setTipo_membresia(res.data.Tipo_membresia)
         setTurno_asignado(res.data.Turno_asignado)
         setEstado_membresia(res.data.Estado_membresia)
+        debugger
     }
 
     return(
@@ -77,13 +78,16 @@ const CompEditStudent = () => {
                     <input value={Nro_telefono} onChange={(e) => setNro_telefono(e.target.value)} type="number" aria-label="Nro. de teléfono" className="form-control imput_form_control"></input>
                 </div>
                 <div className="input-group mt-3">
-                    <span className="input-group-text imput_group_text">Tipo membresía</span>
-                    <input value={Tipo_membresia} onChange={(e) => setTipo_membresia(e.target.value)} type="text" aria-label="Tipo membresía" className="form-control imput_form_control"></input>
+                <label className="input-group-text imput_group_text" htmlFor="inputGroupSelect01">Tipo de membresía</label>
+                    <select value={Tipo_membresia} className="form-select imput_form_control" id="inputGroupSelect01" defaultValue={Tipo_membresia} onChange={(e) => setTipo_membresia(e.target.value)}>
+                        
+                        <option value="Común">Común</option>
+                        <option value="Preferencial">Preferencial</option>
+                    </select>
                 </div>
                 <div className="input-group mt-3">
                     <label className="input-group-text imput_group_text" for="inputGroupSelect02">Turno asignado</label>
-                    <select className="form-select imput_form_control" id="inputGroupSelect02" onChange={(e) => setTurno_asignado(Number(e.target.value))}>
-                        <option className="option_value" selected>Seleccione una</option>
+                    <select value={Turno_asignado} disabled={Tipo_membresia!=='Preferencial'} className="form-select imput_form_control" id="inputGroupSelect02" defaultValue={Turno_asignado} onChange={(e) => setTurno_asignado(Number(e.target.value))}>
                         {horariosDisponibles.map(element => 
                             
                             <option className="option_value" value= {element} >{element}hs</option>
@@ -93,7 +97,10 @@ const CompEditStudent = () => {
                 </div>
                 <div className="input-group mt-3">
                     <span className="input-group-text imput_group_text">Estado membresía</span>
-                    <input value={Estado_membresia} onChange={(e) => setEstado_membresia(e.target.value)} type="text" aria-label="Estado membresía" className="form-control imput_form_control"></input>
+                    <select value={Estado_membresia} className="form-select imput_form_control" id="inputGroupSelect03" defaultValue={Estado_membresia} onChange={(e) => setEstado_membresia(e.target.value)}>
+                        <option value="Al día">Al día</option>
+                        <option value="Atrasada">Atrasada</option>
+                    </select>
                 </div>
 
                 <button type="submit" className="btn btn-success mt-3 boton_guardar">Guardar</button>

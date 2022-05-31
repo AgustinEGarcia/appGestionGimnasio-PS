@@ -25,7 +25,7 @@ const CompCreateStudent = () => {
     const save = async (e) => {
         e.preventDefault()
         await axios.post(URI, {Nombre: Nombre, Apellido: Apellido, DNI: DNI.toString(), Fecha_nacimiento: Fecha_nacimiento, 
-            Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado.toString(), Estado_membresia: Estado_membresia})
+            Nro_telefono: Nro_telefono.toString(), Tipo_membresia: Tipo_membresia, Turno_asignado: Turno_asignado.toString(), Estado_membresia: Estado_membresia.toString()})
         
             navigate('/')
     }
@@ -91,10 +91,10 @@ const CompCreateStudent = () => {
                 </div>
                 <div className="input-group mt-3">
                     <label className="input-group-text imput_group_text" htmlFor="inputGroupSelect03">Estado de membresía</label>
-                    <select className="form-select imput_form_control" id="inputGroupSelect03">
+                    <select className="form-select imput_form_control" id="inputGroupSelect03" onChange={(e) => setEstado_membresia(e.target.value)}>
                         <option defaultValue>Seleccione una</option>
-                        <option value="Al día" onChange={(e) => setEstado_membresia(e.target.value)}>Al día</option>
-                        <option value="Atrasada" onChange={(e) => setEstado_membresia(e.target.value)}>Atrasada</option>
+                        <option value="Al día">Al día</option>
+                        <option value="Atrasada">Atrasada</option>
                     </select>
                 </div>
 
