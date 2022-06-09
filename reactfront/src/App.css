@@ -199,3 +199,22 @@
     height: 100%;
   }
 }
+
+.modal_estilo{
+  background-color: black !important;
+  border: 5px solid gray !important;
+  top: 40%;
+}
+
+.modal_header_footer{
+  justify-content: center !important;
+  background-color: black !important;
+  color: gray !important;
+  font-weight: bold !important;
+  font-style: italic;
+}
+
+.boton_estilo{
+  font-weight: bold !important;
+  font-style: italic;
+}
