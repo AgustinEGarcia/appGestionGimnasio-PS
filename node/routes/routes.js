@@ -1,7 +1,7 @@
 import express from 'express'
 import { createStudentController, getAllStudentsController, getStudentController, 
         updateStudentController, deleteStudentController, 
-        verHorariosDispController } from '../controllers/appController.js'
+        verHorariosDispController } from '../controllers/controller.js'
 
         const router = express.Router()
 
