@@ -84,7 +84,7 @@ const CompShowStudents = () => {
                         ¿Estás seguro que quieres eliminar este alumno?
                       </ModalHeader>
                       <ModalFooter className="modal_header_footer" >
-                        <Button className="boton_estilo" onClick={ () => deleteStudent(student.id)} >Eliminar</Button>
+                        <Button className="boton_estilo_eliminar" onClick={ () => deleteStudent(student.id)} >Eliminar</Button>
                         <Button className="boton_estilo" onClick={cerrarModal} >Cancelar</Button>
                       </ModalFooter>
                     </Modal>

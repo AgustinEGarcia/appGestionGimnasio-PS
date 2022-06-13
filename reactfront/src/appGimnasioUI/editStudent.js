@@ -14,7 +14,7 @@ const CompEditStudent = () => {
   const [Nro_telefono, setNro_telefono] = useState("");
   const [Tipo_membresia, setTipo_membresia] = useState("");
   const [Turno_asignado, setTurno_asignado] = useState("");
-  const [Estado_membresia, setEstado_membresia] = useState("");
+  const [Estado_membresia, setEstado_membresia] = useState("Al día");
 
   const navigate = useNavigate();
 
@@ -167,7 +167,7 @@ const CompEditStudent = () => {
               id="inputGroupSelect02"
               onChange={(e) => setTurno_asignado(Number(e.target.value))}
             >
-              <option>Turno seleccionado: {Turno_asignado}hs</option>
+              <option>Turno seleccionado: {Turno_asignado}</option>
               {horariosDisponibles.map((element) => (
                 <option className="option_value" value={element}>
                   {element}hs
