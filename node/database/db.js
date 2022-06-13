@@ -1,10 +1,8 @@
-import dotenv from 'dotenv'
 import {Sequelize} from 'sequelize'
 
-const paths = process.env.NODE_ENV
-const envFound = dotenv.config({ path: paths });
-
-
-const db = new Sequelize(envFound.parsed.DB_URI);
+const db = new Sequelize('app_gimnasio_db', 'root', '',{
+    host:'localhost',
+    dialect: 'mysql'
+})
 
 export default db

@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { api, getHorarios } from "../services/api";
+import { getHorarios } from "../services/api";
 import "../App.css";
 
 const URI = "http://localhost:8000/students/";
@@ -21,7 +22,7 @@ const CompEditStudent = () => {
 
   const update = async (e) => {
     e.preventDefault();
-    await api.put("/students/" + id, {
+    await axios.put(URI + id, {
       Nombre: Nombre,
       Apellido: Apellido,
       DNI: DNI.toString(),
@@ -44,7 +45,7 @@ const CompEditStudent = () => {
   }, []);
 
   const getStudentByID = async () => {
-    const res = await api.get("/students/" + id);
+    const res = await axios.get(URI + id);
     setNombre(res.data.Nombre);
     setApellido(res.data.Apellido);
     setDNI(res.data.DNI);

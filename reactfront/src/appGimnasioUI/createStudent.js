@@ -1,7 +1,11 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { api, getHorarios } from "../services/api";
+import { getHorarios } from "../services/api";
 import "../App.css";
+
+//constante para hacer referencia a nuestro endpoint
+const URI = "http://localhost:8000/students/";
 
 const CompCreateStudent = () => {
   const [Nombre, setNombre] = useState("");
@@ -17,7 +21,7 @@ const CompCreateStudent = () => {
 
   const save = async (e) => {
     e.preventDefault();
-    await api.post("/students/", {
+    await axios.post(URI, {
       Nombre: Nombre,
       Apellido: Apellido,
       DNI: DNI.toString(),

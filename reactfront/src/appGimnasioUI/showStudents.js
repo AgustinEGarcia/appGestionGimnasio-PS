@@ -1,9 +1,12 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import { api } from "../services/api";
+
+//constante para hacer referencia a nuestro endpoint
+const URI = "http://localhost:8000/students/";
 
 //componente funcional
 const CompShowStudents = () => {
@@ -16,13 +19,13 @@ const CompShowStudents = () => {
 
   //procedimiento para mostrar todos los estudiantes
   const getStudents = async () => {
-    const res = await api.get("/students");
+    const res = await axios.get(URI);
     setStudent(res.data);
   };
 
   //procedimiento para eliminar un estudiante
   const deleteStudent = async (id) => {
-    await api.delete(`${"/students/"}${id}`);
+    await axios.delete(`${URI}${id}`);
     getStudents();
     cerrarModal();
   };
