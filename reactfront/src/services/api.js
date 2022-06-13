@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const URI2 = 'http://localhost:8000/students/horariosDisponibles/'
+const api = axios.create({baseURL:process.env.REACT_APP_API_URI})
+
+console.log(process.env.REACT_APP_API_URI)
 
 const getHorarios = async () => {
-    const res = await axios.get(URI2)
+    const res = await api.get("/students/horariosDisponibles/")
 
     return res.data
 }
 
-export {getHorarios}
+export {getHorarios, api}
