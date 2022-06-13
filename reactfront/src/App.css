@@ -84,7 +84,7 @@
 
 .cabecera-grilla{
   background-color: #000000;
-  color: #9A3C32;
+  color: gray;
   font-style: italic;
   font-size: large;
 }
@@ -98,7 +98,7 @@
 
 .filas_alumnos{
   border-color: #9A3C32;
-  color: #9A3C32;
+  color: gray;
   font-weight: bolder;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .boton_guardar{
-  color: #9A3C32 !important;
+  color: gray !important;
   background-color:black !important;
   border: 5px solid #9A3C32 !important;
   font-weight: bold !important;
@@ -127,15 +127,15 @@
 }
 
 .boton_nuevo_alumno{
-  color: #9A3C32 !important;
+  color: red !important;
   background-color:black !important;
-  border: 5px solid #9A3C32 !important;
+  border: 5px solid gray !important;
 }
 .boton_editar_alumno{
   margin: 5px !important;
-  color: #9A3C32 !important;
+  color: green !important;
   background-color:black !important;
-  border: 5px solid #9A3C32 !important;
+  border: 5px solid gray !important;
 }
 
 .side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option{
@@ -188,16 +188,10 @@
 
 .imput_group_text{
   background-color: #000000 !important;
-  color:#9A3C32 !important;
+  color:gray !important;
   border: 5px solid #9A3C32 !important;
   font-weight: bold !important;
   font-style: italic;
-}
-
-@media (max-width: 600px) {
-  .cabecera-grilla{
-    height: 100%;
-  }
 }
 
 .modal_estilo{
@@ -212,9 +206,21 @@
   color: gray !important;
   font-weight: bold !important;
   font-style: italic;
+  
 }
 
 .boton_estilo{
   font-weight: bold !important;
-  font-style: italic;
+  font-style: italic !important;
+  background-color: #000000 !important;
+  border: 5px solid gray !important;
+  color: gray !important;
+}
+
+.boton_estilo_eliminar{
+  font-weight: bold !important;
+  font-style: italic !important;
+  background-color: #000000 !important;
+  border: 5px solid gray !important;
+  color: red !important;
 }

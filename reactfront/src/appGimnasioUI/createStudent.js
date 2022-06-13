@@ -13,9 +13,9 @@ const CompCreateStudent = () => {
   const [DNI, setDNI] = useState("");
   const [Fecha_nacimiento, setFecha_nacimiento] = useState("");
   const [Nro_telefono, setNro_telefono] = useState("");
-  const [Tipo_membresia, setTipo_membresia] = useState("");
-  const [Turno_asignado, setTurno_asignado] = useState("");
-  const [Estado_membresia, setEstado_membresia] = useState("");
+  const [Tipo_membresia, setTipo_membresia] = useState("Común");
+  const [Turno_asignado, setTurno_asignado] = useState("-");
+  const [Estado_membresia, setEstado_membresia] = useState("Al día");
 
   const navigate = useNavigate();
 
@@ -139,7 +139,7 @@ const CompCreateStudent = () => {
             onChange={handlerTipoMembresia}
             required
           >
-            <option value="Común" selected>Común</option>
+            <option value="Común">Común</option>
             <option value="Preferencial">Preferencial</option>
           </select>
         </div>
@@ -156,9 +156,9 @@ const CompCreateStudent = () => {
             value={Turno_asignado}
             className="form-select imput_form_control"
             id="inputGroupSelect02"
-            onChange={(e) => setTurno_asignado(Number(e.target.value))}
+            onChange={(e) => setTurno_asignado(e.target.value)}
           >
-            <option value={null} selected>Turno seleccionado: {Turno_asignado}hs</option>
+            <option value={null}>Turno seleccionado: {Turno_asignado}hs</option>
             {horariosDisponibles.map((element, index) => (
               <option className="option_value" key={index} value={element}>
                 {element}hs
